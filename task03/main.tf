@@ -1,5 +1,5 @@
 data "azurerm_resource_group" "existing" {
-  name = "cmtr-9b654ca3-mod3-rg"
+  name = var.resource_group_name
 }
 
 resource "azurerm_resource_group" "this" {
