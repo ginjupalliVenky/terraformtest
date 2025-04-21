@@ -25,7 +25,7 @@ resource "azurerm_storage_account" "this" {
 }
 
 resource "azurerm_storage_account_blob_service_properties" "this" {
-  storage_account_id = azurerm_storage_account.this.id
+  storage_account_id       = azurerm_storage_account.this.id
   allow_blob_public_access = false
 }
 
