@@ -11,12 +11,12 @@ resource "azurerm_resource_group" "this" {
 }
 
 resource "azurerm_storage_account" "this" {
-  name                     = var.storage_account_name
-  resource_group_name      = var.resource_group_name
-  location                 = azurerm_resource_group.this.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-  allow_blob_public_access = false
+  name                          = var.storage_account_name
+  resource_group_name           = var.resource_group_name
+  location                      = azurerm_resource_group.this.location
+  account_tier                  = "Standard"
+  account_replication_type      = "LRS"
+  public_network_access_enabled = false
   tags = {
     Creator = var.creator_tag
   }
