@@ -11,23 +11,21 @@ resource "azurerm_resource_group" "this" {
 }
 
 resource "azurerm_storage_account" "this" {
-  name                     = var.storage_account_name
-  resource_group_name      = var.resource_group_name
-  location                 = azurerm_resource_group.this.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
-  min_tls_version          = "TLS1_2"
-  access_tier              = "Hot"
+  name                            = var.storage_account_name
+  resource_group_name             = var.resource_group_name
+  location                        = azurerm_resource_group.this.location
+  account_tier                    = "Standard"
+  account_replication_type        = "LRS"
+  min_tls_version                 = "TLS1_2"
+  access_tier                     = "Hot"
+  allow_nested_items_to_be_public = false
 
   tags = {
     Creator = var.creator_tag
   }
 }
 
-resource "azurerm_storage_account_blob_service_properties" "this" {
-  storage_account_id       = azurerm_storage_account.this.id
-  allow_blob_public_access = false
-}
+
 
 resource "azurerm_virtual_network" "this" {
   name                = var.vnet_name
