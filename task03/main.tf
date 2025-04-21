@@ -1,3 +1,14 @@
+data "azurerm_resource_group" "existing" {
+  name = "cmtr-9b654ca3-mod3-rg"
+}
+
+resource "azurerm_resource_group" "this" {
+  name     = data.azurerm_resource_group.existing.name
+  location = data.azurerm_resource_group.existing.location
+  tags = {
+    Creator = var.creator_tag
+  }
+}
 
 resource "azurerm_storage_account" "this" {
   name                     = var.storage_account_name
